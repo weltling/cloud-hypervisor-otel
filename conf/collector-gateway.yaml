@@ -34,9 +34,6 @@ exporters:
     const_labels:
       label1: value1
 
-  logging:
-    loglevel: info
-
   otlphttp:
     endpoint: "http://jaeger:4318"
     tls:
@@ -50,11 +47,11 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging, otlphttp, debug]
+      exporters: [otlphttp, debug]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging, prometheus]
+      exporters: [prometheus]
   telemetry:
     logs:
       level: debug
